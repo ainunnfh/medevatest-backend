@@ -1,0 +1,20 @@
+CREATE TABLE employee (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(255) NOT NULL,
+    nik BIGINT NOT NULL UNIQUE,
+    gender VARCHAR(10) CHECK (gender IN ('Laki-laki', 'Perempuan')) NOT NULL,
+    place_of_birth VARCHAR(100) NOT NULL,
+    date_of_birth DATE NOT NULL,
+    phone BIGINT NOT NULL,
+    province VARCHAR(100) NOT NULL,
+    subdistrict VARCHAR(100) NOT NULL,
+    address TEXT NOT NULL,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    tipe VARCHAR(50) NOT NULL,
+    contract_start_date DATE NOT NULL,
+    contract_end_date DATE NOT NULL,
+    marital_status VARCHAR(10) CHECK (marital_status IN ('Lajang', 'Menikah', 'Cerai')) NOT NULL,
+    bpjs_doctor_code VARCHAR(50) NOT NULL
+);
