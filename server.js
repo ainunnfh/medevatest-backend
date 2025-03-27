@@ -22,6 +22,16 @@ app.get("/", (req, res) => {
   res.send("Server is running!");
 });
 
+app.get("/api/employee", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM employee ORDER BY id ASC");
+    res.json(result.rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+});
+
 app.post("/api/employee", async (req, res) => {
   try {
     const {
