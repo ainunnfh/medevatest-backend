@@ -1,10 +1,9 @@
 const db = require("./db");
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const jwtSecret = process.env.JWT_SECRET || "default_secret";
 const express = require("express");
 const cors = require("cors");
 const app = express();
+
 const { Pool } = require("pg");
 const pool = new Pool({
   user: process.env.DB_USER || "postgres",
@@ -17,11 +16,6 @@ const pool = new Pool({
 // Middleware
 app.use(cors());
 app.use(express.json());
-
-// Route
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
 
 app.get("/api/employee", async (req, res) => {
   try {
